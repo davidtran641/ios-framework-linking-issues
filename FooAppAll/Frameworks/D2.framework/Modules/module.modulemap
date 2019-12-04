@@ -1,0 +1,11 @@
+framework module D2 {
+  umbrella header "D2.h"
+
+  export *
+  module * { export * }
+}
+
+module D2.Swift {
+    header "D2-Swift.h"
+    requires objc
+}

@@ -13,9 +13,9 @@ FooApp <- D1 <- S1
 FooApp <- S1
 ```
 
-The problem with that above linking is it would cause duplicated symbols of `S1`, as `S1` is being statically linked to another dynamic libarary(`D1`). Which then both `D1` & `S1` are linked to `FooApp`.
+The problem with that above linking is it would cause duplicated symbols of `S1`, as `S1` is being statically linked to another dynamic libarary(`D1`). Which then both `D1` & `S1` are linked to `FooApp`. And because `D1` is dynamic library, the IDE can't know exactly if `D1` is being linked or not, and when will that one will be available.
 
-But this issue strangely only happens when `S1` is linked to FooApp before `D1`. 
+But symbols are duplicating only when `S1` is linked to FooApp before `D1`. 
 Bellow is the linking setting from project inside `FooAppDuplicatedSymbol` folder:
 
 ![S1 before D1](imgs/s1-d1.png)
@@ -98,7 +98,7 @@ Result
 ```
 `U` means undefined symbol, is the one which will be define by another library (if any, or will be an error at runtime). So for this case, the executable application doesn't contain S1 library.
 
-Find more about nm command [here](https://www.mkssoftware.com/docs/man1/nm.1.asp)
+Find more about nm command [here](https://www.unix.com/man-page/osx/1/nm/)
 
 ## What do we get from those things?
 It seems Xcode do some smart stubs when linking static framework:
@@ -162,4 +162,60 @@ dyld: Library not loaded: @rpath/D1.framework/D1
   Referenced from: /Users/tranduc/Library/Developer/CoreSimulator/Devices/3091C80E-962E-47A0-995A-79740FF3E0B9/data/Containers/Bundle/Application/ACEBFD95-3CCF-4908-87B4-EAD4348E6C8C/FooApp.app/FooApp
   Reason: image not found
 (lldb) 
+```
+
+### What if there is one more D2 links to S1?
+The link graph will look like bellow:
+
+```
+FooApp <- D1 <- S1
+FooApp <- D2 <- S1
+FooApp <- S1
+```
+
+Depends on the linking order, there's some senarios:
+
+#### 1. If `FooApp <- S1` is not the first one
+
+The linking order will be
+
+```
+FooApp <- D2 <- S1
+FooApp <- D1 <- S1
+FooApp <- S1
+```
+
+There're duplicated symbols between `D1` & `D2`. S1's classes on FooApp will use the symbols from the first one (so there's no S1's duplicated symbols between `FooApp & D2`). Here is the debug log:
+
+```
+objc[5544]: Class _TtC2S14SBob is implemented in both /Users/tranduc/Library/Developer/CoreSimulator/Devices/3091C80E-962E-47A0-995A-79740FF3E0B9/data/Containers/Bundle/Application/F6D48BAA-1D15-4FB6-95FE-274131B4984B/FooApp.app/Frameworks/D1.framework/D1 (0x107f7d340) and /Users/tranduc/Library/Developer/CoreSimulator/Devices/3091C80E-962E-47A0-995A-79740FF3E0B9/data/Containers/Bundle/Application/F6D48BAA-1D15-4FB6-95FE-274131B4984B/FooApp.app/Frameworks/D2.framework/D2 (0x107f72340). One of the two will be used. Which one is undefined.
+2019-12-05 00:19:26.155027+0800 FooApp[5544:484967] libMobileGestalt MobileGestalt.c:890: MGIsDeviceOneOfType is not supported on this platform.
+Start...
+S1 value: 10
+Call from Alice: 0
+Call from Eve: 10
+```
+
+#### 2. if `FooApp <- S1` is the first one
+
+Linking order
+
+```
+FooApp <- S1
+FooApp <- D1 <- S1
+FooApp <- D2 <- S1
+```
+
+There're 2 duplicated symbols: `D2 & D1` and `D2 & FooApp` . So each framework/executable will have its own version of `S1` 😭😭😭 . 
+
+Bellow is the debug logs:
+
+```
+objc[5608]: Class _TtC2S14SBob is implemented in both /Users/tranduc/Library/Developer/CoreSimulator/Devices/3091C80E-962E-47A0-995A-79740FF3E0B9/data/Containers/Bundle/Application/FCDC2C43-FC20-4D39-B1BB-426B88225EB5/FooApp.app/Frameworks/D2.framework/D2 (0x101512340) and /Users/tranduc/Library/Developer/CoreSimulator/Devices/3091C80E-962E-47A0-995A-79740FF3E0B9/data/Containers/Bundle/Application/FCDC2C43-FC20-4D39-B1BB-426B88225EB5/FooApp.app/Frameworks/D1.framework/D1 (0x101507340). One of the two will be used. Which one is undefined.
+objc[5608]: Class _TtC2S14SBob is implemented in both /Users/tranduc/Library/Developer/CoreSimulator/Devices/3091C80E-962E-47A0-995A-79740FF3E0B9/data/Containers/Bundle/Application/FCDC2C43-FC20-4D39-B1BB-426B88225EB5/FooApp.app/Frameworks/D2.framework/D2 (0x101512340) and /Users/tranduc/Library/Developer/CoreSimulator/Devices/3091C80E-962E-47A0-995A-79740FF3E0B9/data/Containers/Bundle/Application/FCDC2C43-FC20-4D39-B1BB-426B88225EB5/FooApp.app/FooApp (0x1012095e0). One of the two will be used. Which one is undefined.
+2019-12-05 00:24:39.807895+0800 FooApp[5608:494345] libMobileGestalt MobileGestalt.c:890: MGIsDeviceOneOfType is not supported on this platform.
+Start...
+S1 value: 10
+Call from Alice: 0
+Call from Eve: 0
 ```

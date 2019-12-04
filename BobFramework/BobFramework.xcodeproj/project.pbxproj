@@ -12,6 +12,9 @@
 		2F0337AA2397F875002E4D32 /* SBob.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F0337A92397F875002E4D32 /* SBob.swift */; };
 		2F0337AC2397F89C002E4D32 /* DAlice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F0337AB2397F89C002E4D32 /* DAlice.swift */; };
 		2F0337AE2397F8C4002E4D32 /* S1.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F0337942397F85A002E4D32 /* S1.framework */; };
+		2F0337BF2398110F002E4D32 /* D2.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F0337BD2398110F002E4D32 /* D2.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2F0337C42398116A002E4D32 /* D2Eve.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F0337C32398116A002E4D32 /* D2Eve.swift */; };
+		2F0337C523981195002E4D32 /* S1.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F0337942397F85A002E4D32 /* S1.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -33,6 +36,10 @@
 		2F0337A42397F863002E4D32 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2F0337A92397F875002E4D32 /* SBob.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SBob.swift; sourceTree = "<group>"; };
 		2F0337AB2397F89C002E4D32 /* DAlice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DAlice.swift; sourceTree = "<group>"; };
+		2F0337BB2398110F002E4D32 /* D2.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = D2.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2F0337BD2398110F002E4D32 /* D2.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = D2.h; sourceTree = "<group>"; };
+		2F0337BE2398110F002E4D32 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2F0337C32398116A002E4D32 /* D2Eve.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = D2Eve.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,6 +58,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		2F0337B82398110F002E4D32 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2F0337C523981195002E4D32 /* S1.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -59,6 +74,7 @@
 			children = (
 				2F0337952397F85A002E4D32 /* S1 */,
 				2F0337A22397F863002E4D32 /* D1 */,
+				2F0337BC2398110F002E4D32 /* D2 */,
 				2F0337852397F839002E4D32 /* Products */,
 				2F0337AD2397F8C4002E4D32 /* Frameworks */,
 			);
@@ -69,6 +85,7 @@
 			children = (
 				2F0337942397F85A002E4D32 /* S1.framework */,
 				2F0337A12397F863002E4D32 /* D1.framework */,
+				2F0337BB2398110F002E4D32 /* D2.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -100,6 +117,16 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		2F0337BC2398110F002E4D32 /* D2 */ = {
+			isa = PBXGroup;
+			children = (
+				2F0337BD2398110F002E4D32 /* D2.h */,
+				2F0337BE2398110F002E4D32 /* Info.plist */,
+				2F0337C32398116A002E4D32 /* D2Eve.swift */,
+			);
+			path = D2;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -116,6 +143,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				2F0337A52397F863002E4D32 /* D1.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2F0337B62398110F002E4D32 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2F0337BF2398110F002E4D32 /* D2.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -159,6 +194,24 @@
 			productReference = 2F0337A12397F863002E4D32 /* D1.framework */;
 			productType = "com.apple.product-type.framework";
 		};
+		2F0337BA2398110F002E4D32 /* D2 */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2F0337C22398110F002E4D32 /* Build configuration list for PBXNativeTarget "D2" */;
+			buildPhases = (
+				2F0337B62398110F002E4D32 /* Headers */,
+				2F0337B72398110F002E4D32 /* Sources */,
+				2F0337B82398110F002E4D32 /* Frameworks */,
+				2F0337B92398110F002E4D32 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = D2;
+			productName = D2;
+			productReference = 2F0337BB2398110F002E4D32 /* D2.framework */;
+			productType = "com.apple.product-type.framework";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -173,6 +226,10 @@
 						LastSwiftMigration = 1020;
 					};
 					2F0337A02397F863002E4D32 = {
+						CreatedOnToolsVersion = 10.2.1;
+						LastSwiftMigration = 1020;
+					};
+					2F0337BA2398110F002E4D32 = {
 						CreatedOnToolsVersion = 10.2.1;
 						LastSwiftMigration = 1020;
 					};
@@ -192,6 +249,7 @@
 			targets = (
 				2F0337932397F85A002E4D32 /* S1 */,
 				2F0337A02397F863002E4D32 /* D1 */,
+				2F0337BA2398110F002E4D32 /* D2 */,
 			);
 		};
 /* End PBXProject section */
@@ -205,6 +263,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		2F03379F2397F863002E4D32 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2F0337B92398110F002E4D32 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -227,6 +292,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				2F0337AC2397F89C002E4D32 /* DAlice.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2F0337B72398110F002E4D32 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2F0337C42398116A002E4D32 /* D2Eve.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -467,6 +540,57 @@
 			};
 			name = Release;
 		};
+		2F0337C02398110F002E4D32 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_STYLE = Automatic;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = D2/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.david.D2;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		2F0337C12398110F002E4D32 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_STYLE = Automatic;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = D2/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.david.D2;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -493,6 +617,15 @@
 			buildConfigurations = (
 				2F0337A72397F863002E4D32 /* Debug */,
 				2F0337A82397F863002E4D32 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2F0337C22398110F002E4D32 /* Build configuration list for PBXNativeTarget "D2" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2F0337C02398110F002E4D32 /* Debug */,
+				2F0337C12398110F002E4D32 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
