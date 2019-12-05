@@ -127,7 +127,7 @@ S1 value: 10
 Call from Alice: 10
 ```
 
-Futher more, Xcode only just need to read S1's header & module map. So we can actually delete other files and folders (include the library) & it still works:
+Futher more, Xcode only just need to read S1's header & module map. So we can actually delete other files and folders (include the library file `S1`, just replace this file by any dummy file) & it still works:
 ![Delete S1](imgs/delete-s1.png)
 
 #### 2. If there's no S1 at any place

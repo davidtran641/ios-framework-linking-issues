@@ -15,6 +15,8 @@
 		2F0337782397F61C002E4D32 /* D1.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 2F0337702397F34A002E4D32 /* D1.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		2F0337C82398129A002E4D32 /* D2.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 2F0337C62398129A002E4D32 /* D2.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		2F0337C9239812C5002E4D32 /* S1.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F0337762397F4EB002E4D32 /* S1.framework */; };
+		2F5FE6A5239885AB00077E2C /* D2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F0337C62398129A002E4D32 /* D2.framework */; };
+		2F5FE6A6239885AE00077E2C /* D1.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F0337702397F34A002E4D32 /* D1.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -50,6 +52,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2F5FE6A5239885AB00077E2C /* D2.framework in Frameworks */,
+				2F5FE6A6239885AE00077E2C /* D1.framework in Frameworks */,
 				2F0337C9239812C5002E4D32 /* S1.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
